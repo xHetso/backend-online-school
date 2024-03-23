@@ -41,6 +41,8 @@ export class AuthService {
 
 		const user = await this.UserModel.findById(result._id)
 
+		if (!user) throw new UnauthorizedException('User not found')
+
 		const tokens = await this.issueTokenPair(String(user._id))
 
 		return {
@@ -66,16 +68,21 @@ export class AuthService {
 			password: await hash(dto.password, salt),
 		})
 
-		const tokens = await this.issueTokenPair(String(newUser._id))
+		const user = await newUser.save()
+
+		const tokens = await this.issueTokenPair(String(user._id))
 
 		return {
-			user: this.returnUserFields(newUser),
+			user: this.returnUserFields(user),
 			...tokens,
 		}
 	}
 
 	async validatorUser(dto: AuthLoginDto): Promise<UserModel> {
 		const user = await this.UserModel.findOne({ email: dto.email })
+		if (!user) {
+			throw new UnauthorizedException('User not found')
+		}
 
 		const IsValidPassword = await compare(dto.password, user.password)
 		if (!IsValidPassword) {
