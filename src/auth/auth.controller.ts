@@ -9,6 +9,7 @@ import {
 import { AuthService } from './auth.service'
 import { AuthLoginDto } from './dto/auth-login.dto'
 import { AuthRegisterDto } from './dto/auth-register.dto'
+import { RefreshTokenDto } from './dto/refreshToken.dto'
 
 @Controller('auth')
 export class AuthController {
@@ -19,6 +20,13 @@ export class AuthController {
 	@Post('login')
 	async login(@Body() dto: AuthLoginDto) {
 		return this.AuthService.login(dto)
+	}
+
+	@UsePipes(new ValidationPipe())
+	@HttpCode(200)
+	@Post('login/access-token')
+	async getNewTokens(@Body() dto: RefreshTokenDto) {
+		return this.AuthService.getNewTokens(dto)
 	}
 
 	@UsePipes(new ValidationPipe())

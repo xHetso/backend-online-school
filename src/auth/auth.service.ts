@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable } from '@nestjs/common'
+import {
+	BadRequestException,
+	Injectable,
+	UnauthorizedException,
+} from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 import { ModelType } from '@typegoose/typegoose/lib/types'
 import { compare, genSalt, hash } from 'bcryptjs'
@@ -6,6 +10,7 @@ import { InjectModel } from 'nestjs-typegoose'
 import { UserModel } from 'src/user/user.model'
 import { AuthLoginDto } from './dto/auth-login.dto'
 import { AuthRegisterDto } from './dto/auth-register.dto'
+import { RefreshTokenDto } from './dto/refreshToken.dto'
 
 @Injectable()
 export class AuthService {
@@ -16,7 +21,27 @@ export class AuthService {
 
 	async login(dto: AuthLoginDto) {
 		const user = await this.validatorUser(dto)
-		const tokens = await this.issue(String(user._id))
+		const tokens = await this.issueTokenPair(String(user._id))
+
+		return {
+			user: this.returnUserFields(user),
+			...tokens,
+		}
+	}
+
+	async getNewTokens({ refreshToken }: RefreshTokenDto) {
+		if (!refreshToken) {
+			throw new UnauthorizedException('Please sign in!')
+		}
+
+		const result = await this.jwtService.verifyAsync(refreshToken)
+		if (!result) {
+			throw new UnauthorizedException('Invalid refresh or expired!')
+		}
+
+		const user = await this.UserModel.findById(result._id)
+
+		const tokens = await this.issueTokenPair(String(user._id))
 
 		return {
 			user: this.returnUserFields(user),
@@ -41,7 +66,7 @@ export class AuthService {
 			password: await hash(dto.password, salt),
 		})
 
-		const tokens = await this.issue(String(newUser._id))
+		const tokens = await this.issueTokenPair(String(newUser._id))
 
 		return {
 			user: this.returnUserFields(newUser),
@@ -59,7 +84,7 @@ export class AuthService {
 		return user
 	}
 
-	async issue(userId: string) {
+	async issueTokenPair(userId: string) {
 		const data = { _id: userId }
 
 		const refreshToken = await this.jwtService.signAsync(data, {
