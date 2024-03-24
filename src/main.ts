@@ -6,11 +6,11 @@ async function bootstrap() {
 
 	app.setGlobalPrefix('api')
 
-	// Настройка CORS
+	// Обновленная настройка CORS
 	app.enableCors({
-		origin: 'http://localhost:5173',
+		origin: 'http://localhost:5173', // или использовать true для разрешения всех источников
 		methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-		allowedHeaders: 'Content-Type, Accept',
+		allowedHeaders: 'Content-Type, Accept, Authorization', // Добавить Authorization
 	})
 
 	await app.listen(4200)
