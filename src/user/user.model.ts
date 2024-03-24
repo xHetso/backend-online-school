@@ -18,4 +18,25 @@ export class UserModel extends TimeStamps {
 
 	@prop({ default: false })
 	isAdmin: boolean
+
+	@prop()
+	avatar: string
+
+	@prop()
+	country: string
+
+	@prop()
+	city: string
+
+	@prop()
+	instagram: string
+
+	@prop()
+	telegram: string
+
+	@prop()
+	youtube: string
+
+	@prop()
+	information: string
 }
