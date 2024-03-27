@@ -9,6 +9,7 @@ import { getMongoDBConfig } from './config/mongo.config'
 import { FileModule } from './file/file.module'
 import { IntensiveModule } from './intensive/intensive.module'
 import { UserModule } from './user/user.module'
+import { LessonModule } from './lesson/lesson.module';
 
 @Module({
 	imports: [
@@ -23,6 +24,7 @@ import { UserModule } from './user/user.module'
 		IntensiveModule,
 		FileModule,
 		AuthorModule,
+		LessonModule,
 	],
 	controllers: [AppController],
 	providers: [AppService],
