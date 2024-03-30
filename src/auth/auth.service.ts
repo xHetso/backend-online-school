@@ -95,11 +95,11 @@ export class AuthService {
 		const data = { _id: userId }
 
 		const refreshToken = await this.jwtService.signAsync(data, {
-			expiresIn: '15d',
+			expiresIn: '500d',
 		})
 
 		const accessToken = await this.jwtService.signAsync(data, {
-			expiresIn: '1h',
+			expiresIn: '300d',
 		})
 
 		return {
