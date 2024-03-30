@@ -33,15 +33,28 @@ export class AuthorService {
 				],
 			}
 
-		// Aggregation
-
-		return this.AuthorModel.find(options)
-			.select('-updatedAt -__v')
+		return this.AuthorModel.aggregate()
+			.match(options)
+			.lookup({
+				from: 'Lesson',
+				foreignField: 'authors',
+				localField: '_id',
+				as: 'lessons',
+			})
+			.addFields({
+				countLessons: { $size: '$lessons' },
+			})
+			.project({
+				__v: 0,
+				updatedAt: 0,
+				lessons: 0,
+			})
 			.sort({
-				createdAt: 'desc',
+				createdAt: -1,
 			})
 			.exec()
 	}
+
 
 	/* Admin place */
 	async byId(_id: string) {
