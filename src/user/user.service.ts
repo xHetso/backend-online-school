@@ -26,11 +26,6 @@ export class UserService {
 			throw new NotFoundException('Email busy')
 		}
 
-		if (dto.password) {
-			const salt = await genSalt(10)
-			user.password = await hash(dto.password, salt)
-		}
-
 		user.email = dto.email
 
 		if (dto.name) user.name = dto.name
