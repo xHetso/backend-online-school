@@ -7,4 +7,6 @@ export class CreateIntensiveDto {
 	slug: string
 	@IsString()
 	description: string
+	@IsString()
+	poster: string
 }

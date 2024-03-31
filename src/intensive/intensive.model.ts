@@ -12,4 +12,7 @@ export class IntensiveModel extends TimeStamps {
 
 	@prop()
 	description: string
+
+	@prop()
+	poster: string
 }

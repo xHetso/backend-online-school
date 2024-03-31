@@ -64,6 +64,7 @@ export class IntensiveService {
 			name: '',
 			slug: '',
 			description: '',
+			poster: '',
 		}
 		const intensive = await this.IntensiveModel.create(defaultValue)
 		return intensive._id

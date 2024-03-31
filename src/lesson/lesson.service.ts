@@ -99,6 +99,7 @@ export class LessonService {
             videoUrl: '',
             intensives: [],
             authors: [],
+			exercises: [],
             isSendTelegram: false,
 		}
 		const lesson = await this.LessonModel.create(defaultValue)

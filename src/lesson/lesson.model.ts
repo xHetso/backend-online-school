@@ -18,6 +18,8 @@ export class LessonModel extends TimeStamps {
 	intensives: Ref<IntensiveModel>[]
 	@prop({ref: () => AuthorModel})
 	authors: Ref<AuthorModel>[]
+	@prop()
+	exercises: string[]
 	@prop({ default: false })
 	isSendTelegram?: boolean
 }

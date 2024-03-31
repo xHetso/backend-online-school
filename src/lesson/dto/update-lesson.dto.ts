@@ -22,5 +22,9 @@ export class UpdateLessonDto {
 	@IsString({ each: true })
 	authors: string[]
 
+	@IsArray()
+	@IsString({ each: true })
+	exercises: string[]
+
 	isSendTelegram?: boolean
 }
