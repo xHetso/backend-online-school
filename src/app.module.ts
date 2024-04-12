@@ -10,6 +10,8 @@ import { FileModule } from './file/file.module'
 import { IntensiveModule } from './intensive/intensive.module'
 import { UserModule } from './user/user.module'
 import { LessonModule } from './lesson/lesson.module';
+import { CommentsModule } from './comments/comments.module';
+import { ChatModule } from './chat/chat.module';
 
 @Module({
 	imports: [
@@ -25,6 +27,8 @@ import { LessonModule } from './lesson/lesson.module';
 		FileModule,
 		AuthorModule,
 		LessonModule,
+		CommentsModule,
+		ChatModule,
 	],
 	controllers: [AppController],
 	providers: [AppService],
