@@ -8,7 +8,7 @@ export class ChatGateway {
 
   @SubscribeMessage('chatToServer')
   handleMessage(
-    @MessageBody() message: { userId: string; userName: string, userSurname: string, content: string; senderId: string; senderName: string; senderSurname: string },
+    @MessageBody() message: { senderId: string; senderName: string, senderSurname: string, content: string; recipientId: string; recipientName: string; recipientSurname: string },
     @ConnectedSocket() client: Socket
   ) {
     // Обработка и передача сообщения
@@ -20,15 +20,15 @@ export class ChatGateway {
       date: formattedDate, // Дата в формате ДД.ММ.ГГГГ
       time: formattedTime, // Время в формате ЧЧ:ММ
       content: message.content,
-      user: {
-        userId: message.userId,
-        name: message.userName,
-        surname: message.userSurname,
-      },
       sender: {
-        id: message.senderId,
+        userId: message.senderId,
         name: message.senderName,
-        surname: message.senderSurname
+        surname: message.senderSurname,
+      },
+      recipient: {
+        id: message.recipientId,
+        name: message.recipientName,
+        surname: message.recipientSurname
       },
     };
     console.log(formattedMessage)
