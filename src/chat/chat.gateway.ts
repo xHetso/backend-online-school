@@ -7,10 +7,29 @@ export class ChatGateway {
   server: Server;
 
   @SubscribeMessage('chatToServer')
-  handleMessage(@MessageBody() message: { senderId: string; userId: string; content: string }, @ConnectedSocket() client: Socket) {
-    // Логика обработки полученного сообщения и передача его всем подключенным клиентам
-    this.server.emit('chatToClient', message);
+  handleMessage(
+    @MessageBody() message: { userId: string; userName: string, userSurname: string, content: string; senderId: string; senderName: string; senderSurname: string },
+    @ConnectedSocket() client: Socket
+  ) {
+    // Обработка и передача сообщения
+    const formattedMessage = {
+      id: new Date().getTime(), // Генерируем временный ID для сообщения
+      content: message.content,
+      user: {
+        userId: message.userId,
+        name: message.userName,
+        surname: message.userSurname,
+      },
+      sender: {
+        id: message.senderId,
+        name: message.senderName,
+        surname: message.senderSurname
+      },
+    };
+    this.server.emit('chatToClient', formattedMessage);
   }
+  
+  
 
   // Можно добавить дополнительные обработчики событий по необходимости
 }
