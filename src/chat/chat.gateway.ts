@@ -12,8 +12,13 @@ export class ChatGateway {
     @ConnectedSocket() client: Socket
   ) {
     // Обработка и передача сообщения
+    const now = new Date();
+    const formattedDate = now.toLocaleDateString('ru-RU', { timeZone: 'Asia/Almaty' });
+    const formattedTime = now.toLocaleTimeString('ru-RU', { timeZone: 'Asia/Almaty', hour: '2-digit', minute: '2-digit' });
+
     const formattedMessage = {
-      id: new Date().getTime(), // Генерируем временный ID для сообщения
+      date: formattedDate, // Дата в формате ДД.ММ.ГГГГ
+      time: formattedTime, // Время в формате ЧЧ:ММ
       content: message.content,
       user: {
         userId: message.userId,
@@ -26,6 +31,7 @@ export class ChatGateway {
         surname: message.senderSurname
       },
     };
+    console.log(formattedMessage)
     this.server.emit('chatToClient', formattedMessage);
   }
   
