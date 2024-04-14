@@ -1,0 +1,122 @@
+[
+  {
+    "date": "14.04.2024",
+    "time": "19:01",
+    "content": "sadasdasdasd",
+    "sender": {
+      "userId": "660a58228d684bf7d36ea4f9",
+      "name": "Damir",
+      "surname": "Hetso"
+    },
+    "recipient": {
+      "id": "6600891830076be279617b60",
+      "name": "Steam",
+      "surname": "An"
+    }
+  },
+  {
+    "date": "14.04.2024",
+    "time": "19:01",
+    "content": "sadasdasdasddsadasdasd",
+    "sender": {
+      "userId": "660a58228d684bf7d36ea4f9",
+      "name": "Damir",
+      "surname": "Hetso"
+    },
+    "recipient": {
+      "id": "6600891830076be279617b60",
+      "name": "Steam",
+      "surname": "An"
+    }
+  },
+  {
+    "date": "14.04.2024",
+    "time": "19:02",
+    "content": "sadasdasdsa",
+    "sender": {
+      "userId": "660a58228d684bf7d36ea4f9",
+      "name": "Damir",
+      "surname": "Hetso"
+    },
+    "recipient": {
+      "id": "660a58228d684bf7d36ea4f9",
+      "name": "Damir",
+      "surname": "Hetso"
+    }
+  },
+  {
+    "date": "14.04.2024",
+    "time": "19:03",
+    "content": "sadasdasdsad",
+    "sender": {
+      "userId": "660a58228d684bf7d36ea4f9",
+      "name": "Damir",
+      "surname": "Hetso"
+    },
+    "recipient": {
+      "id": "65ff1c86bcb3619c7f9f6bb5",
+      "name": "Alius",
+      "surname": "Absolute"
+    }
+  },
+  {
+    "date": "14.04.2024",
+    "time": "19:03",
+    "content": "sdsadsadas",
+    "sender": {
+      "userId": "660a58228d684bf7d36ea4f9",
+      "name": "Damir",
+      "surname": "Hetso"
+    },
+    "recipient": {
+      "id": "65ff1c86bcb3619c7f9f6bb5",
+      "name": "Alius",
+      "surname": "Absolute"
+    }
+  },
+  {
+    "date": "14.04.2024",
+    "time": "19:03",
+    "content": "asdasdasd",
+    "sender": {
+      "userId": "660a58228d684bf7d36ea4f9",
+      "name": "Damir",
+      "surname": "Hetso"
+    },
+    "recipient": {
+      "id": "66095e7d5720a5844c8d19dc",
+      "name": "Nastya",
+      "surname": "Nairy"
+    }
+  },
+  {
+    "date": "14.04.2024",
+    "time": "19:03",
+    "content": "sadasdsadasd",
+    "sender": {
+      "userId": "66095e7d5720a5844c8d19dc",
+      "name": "Nastya",
+      "surname": "Nairy"
+    },
+    "recipient": {
+      "id": "660a58228d684bf7d36ea4f9",
+      "name": "Damir",
+      "surname": "Hetso"
+    }
+  },
+  {
+    "date": "14.04.2024",
+    "time": "19:08",
+    "content": "ыфвфывфывф",
+    "sender": {
+      "userId": "66095e7d5720a5844c8d19dc",
+      "name": "Nastya",
+      "surname": "Nairy"
+    },
+    "recipient": {
+      "id": "660a58228d684bf7d36ea4f9",
+      "name": "Damir",
+      "surname": "Hetso"
+    }
+  }
+]
