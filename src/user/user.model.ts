@@ -19,6 +19,9 @@ export class UserModel extends TimeStamps {
 	@prop({ default: false })
 	isAdmin: boolean
 
+	@prop({ default: 'Student'})
+	roles: string
+
 	@prop()
 	avatar: string
 
