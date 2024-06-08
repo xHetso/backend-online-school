@@ -20,6 +20,8 @@ export class LessonModel extends TimeStamps {
 	authors: Ref<AuthorModel>[]
 	@prop()
 	exercises: string[]
+	@prop()
+	description: string
 	@prop({ default: false })
 	isSendTelegram?: boolean
 }

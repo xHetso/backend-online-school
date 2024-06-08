@@ -100,6 +100,7 @@ export class LessonService {
             intensives: [],
             authors: [],
 			exercises: [],
+			description: '',
             isSendTelegram: false,
 		}
 		const lesson = await this.LessonModel.create(defaultValue)

@@ -26,5 +26,8 @@ export class UpdateLessonDto {
 	@IsString({ each: true })
 	exercises: string[]
 
+	@IsString()
+	description: string
+
 	isSendTelegram?: boolean
 }
